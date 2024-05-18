@@ -2,40 +2,45 @@
 // List [Consider all edge cases].
 
 #include <iostream>
+
 using namespace std;
 
 struct node{
-            int data;
-            node* next;
-            node(int x){
-                  data = x;
-                  next = NULL;
-            }
+    int data;
+    node *next;
+    node(int x){
+        data = x;
+        next = NULL;
+    }
 };
 
-void insert_at_end(node* *head,int new_d){
-
-        node* new_node = new node(new_d);
-        if(*head == NULL){
-            *head = new_node;
-
-      }
-
-
-    else{
-         node* last = *head;
-    while (last->next != NULL) {
-        last = last->next;
+node* consLL(int a[] , int a_size){
+    
+    node *head = new node(a[0]);
+    node *current = head;
+    for(int i = 1 ; i < a_size ;i++){
+        node *temp = new node(a[i]);
+        current->next = temp;
+        current = temp;
     }
-    last->next = new_node;
+  return head;  
+}
+void traverseSLL(node *head){
+    node *a = head;
+    while(a != NULL){
+        cout << a->data <<" ";
+        a = a->next;
     }
 }
-
-void traverselist(node* node) {
-    while (node != NULL) {
-        cout << node->data << " ";
-        node = node->next;
-    }
+ void insert_at_end(node *head, int n){
+    node* lastnode = new node(n);
+    node* temp = head;
+    if(temp == NULL) head = lastnode;
+    else{
+    while(temp->next!=NULL)
+    temp= temp->next;
+    
+    temp->next= lastnode;}
 }
 
 
